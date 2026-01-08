@@ -41,7 +41,7 @@
                     </div>
                     <p
                             class="text-white text-center font-poppins text-base lg:text-lg font-semibold tracking-normal pt-4">
-                        Online Admission Application Portal for Lady Health Visitor (LHV)<br/>
+                        Online Admission Application Portal for Post RN BSc Nursing (2 Years Degree Program)<br/>
                         in Public Sector Nursing Colleges of Punjab<br/>
 
                     </p>

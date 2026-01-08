@@ -14,7 +14,7 @@
                         <img src="{{ asset('images/login.png') }}" alt="Login Image" class="w-20 h-20">
                     </div>
                     <p class="text-white text-center font-poppins text-base lg:text-lg font-semibold tracking-normal pt-4">
-                        Online Admission Application Portal for Lady Health Visitor (LHV)<br/>
+                         Online Admission Application Portal for Post RN BSc Nursing (2 Years Degree Program)<br/>
                         in Public Sector Nursing Colleges of Punjab<br/>
                     </p>
                     <p class="text-white font-poppins tracking-wide">Session {{config('envdata.pdf_session')}}</p>
