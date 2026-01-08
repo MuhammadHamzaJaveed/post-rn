@@ -1,0 +1,29 @@
+@import './../../vendor/filament/filament/resources/css/app.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+.filepond--root .filepond--drop-label {
+    min-height: 3em;
+}
+
+.filepond--drop-label {
+    color: #179F9E;
+    min-height: 2.75em;
+}
+
+.filepond--root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    margin-bottom: 0em
+}
+
+.filepond--credits {
+    display: none !important;
+}

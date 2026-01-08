@@ -1,0 +1,57 @@
+# === Dependencies ===
+/node_modules
+/vendor
+
+# === Laravel specific ===
+/public/hot
+/public/storage
+/public/phpmyadmin
+/public/vendor
+/public/build
+/public/mix-manifest.json
+
+# Compiled & cache files
+/storage/*.key
+/storage/framework/views/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/cache/data/*
+/storage/logs/*
+/bootstrap/cache/*.php
+
+# === Environment files ===
+.env
+.env.backup
+.env.production
+.env.staging
+.env.qa
+.env.uat
+
+# === Development / IDE ===
+/.idea
+/.vscode
+/.vagrant
+.vagrant/
+Vagrantfile
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+clear-cache.sh
+db-reset.sh
+after.sh
+aliases
+_ide_*
+
+# === System files ===
+.DS_Store
+public/.DS_Store
+public/images/.DS_Store
+public/images/svg/.DS_Store
+
+# === Vapor / deployment ===
+.vapor/
+
+# === Homestead ===
+Homestead.json
+Homestead.yamlrr
+.rr.yaml

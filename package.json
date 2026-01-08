@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.2",
+        "@tailwindcss/forms": "^0.5.6",
+        "@tailwindcss/typography": "^0.5.9",
+        "alpinejs": "^3.0.6",
+        "autoprefixer": "^10.4.15",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.14",
+        "sass": "^1.64.2",
+        "sass-loader": "^12.6.0",
+        "tailwindcss": "^3.3.3",
+        "tippy.js": "^6.3.7"
+    },
+    "dependencies": {
+        "@alpinejs/focus": "^3.14.8",
+        "caniuse-lite": "^1.0.30001667",
+        "filepond": "^4.30.4",
+        "flowbite": "^1.8.1",
+        "tailwindcss-aspect-ratio": "^3.0.0",
+        "vue": "^3.3.4",
+        "vue-loader": "^17.2.2"
+    }
+}
