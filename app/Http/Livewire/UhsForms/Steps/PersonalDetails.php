@@ -193,6 +193,7 @@ class PersonalDetails extends Component
         $this->fatherName = auth()->user()->father_name;
         $personalDetails = auth()->user()->personalDetails;
         $this->cnic = $user->cnic_passport_id;
+        $this->genderId = auth()->user()->seat_id;
         $this->cnic_passport = $user->cnic_passport;
         $this->seatCategories = auth()->user()->seatCategories->pluck('id')->toArray();
         if (auth()->user()->image) {
@@ -238,7 +239,7 @@ class PersonalDetails extends Component
      */
     public function getAllGendersProperty()
     {
-        return $this->userServices->getAllGenders();
+      return  $this->userServices->getAllGenders()->where('id',auth()->user()->seat_id)->toArray();
     }
 
     /**

@@ -17,10 +17,10 @@ class UserSeeder extends Seeder
     {
         $this->createSuperAdminUser();
        $this->createAdminUser();
-        $this->createSupervisoryTeamUser();
-        $this->createVerificationTeamUser();
-        $this->createInChargeTeamUser();
-        $this->createCollegeUser();
+        // $this->createSupervisoryTeamUser();
+        // $this->createVerificationTeamUser();
+        // $this->createInChargeTeamUser();
+        // $this->createCollegeUser();
     }
 
     /**

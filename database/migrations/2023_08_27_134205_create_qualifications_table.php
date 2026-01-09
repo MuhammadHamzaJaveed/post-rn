@@ -36,6 +36,14 @@ class CreateQualificationsTable extends Migration
             $table->string('physics', 200)->nullable();
             $table->string('biology', 200)->nullable();
             $table->string('chemistery', 200)->nullable();
+
+            $table->string('nursing_passing_year', 200)->nullable();
+            $table->string('nursing_roll_no', 200)->nullable();
+            $table->integer('nursing_marks_obtained')->nullable();
+            $table->integer('nursing_total_marks')->nullable();
+
+            $table->string('current_job', 200)->nullable();
+            $table->text('experiences')->nullable();
             $table->timestamps();
         });
     }

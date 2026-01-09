@@ -43,8 +43,8 @@ class Programs extends Component
          $rules = [
             // 'program'        => 'required',
            'agreed'         => 'required|accepted',
-            // 'seatCategory'      => 'required',
-            'disciplineId' => 'required'
+             'seatCategory'      => 'required',
+//            'disciplineId' => 'required'
         ];
 
         /*if ($this->program == 3) {
@@ -87,8 +87,8 @@ class Programs extends Component
 //        $this->program_priority = $user?->program_priority ?? 2;
 //        $this->foreigner = $user?->foreigner;
 //        $this->isOpenMerit = $user?->is_open_merit;
-//        $this->seatCategory = $user?->seat_id;
-        $this->disciplineId = $user->discipline_id;
+        $this->seatCategory = $user?->seat_id;
+//        $this->disciplineId = $user->discipline_id;
 
 
     }
@@ -154,8 +154,8 @@ class Programs extends Component
         auth()->user()->update([
 //            'program_id'       => $this->program,
 //            'program_priority' => $this->program_priority,
-//            'seat_id' => $this->seatCategory,
-            'discipline_id' => $this->disciplineId,
+                'seat_id' => $this->seatCategory,
+//            'discipline_id' => $this->disciplineId,
             /*'foreigner'        => $this->foreigner,
             'is_open_merit' => $this->isOpenMerit,*/
         ]);

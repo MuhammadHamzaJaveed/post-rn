@@ -29,9 +29,8 @@ class SeatSeeder extends Seeder
     public function seats(): array
     {
         return [
-            'Morning',
-            'Evening',
-            'Both',
+            'Diploma In One-year Post-Basic Specialty',
+            'Diploma in Midwifery',
         ];
     }
 }

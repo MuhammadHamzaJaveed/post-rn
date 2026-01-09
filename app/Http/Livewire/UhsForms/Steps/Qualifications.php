@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\UhsForms\Steps;
 
 use App\Services\UserServices\UserServices;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -46,6 +47,18 @@ class Qualifications extends Component
     public $sscRollNo;
     public $hsscRollNo;
 
+    public $experiences = [];
+
+    public $nursingPassingYear;
+    public $nursingRollNo;
+
+    public $nursingMarksObtained;
+
+    public $nursingTotalMarks;
+
+    public $currentJob;
+
+
     /**
      * @return array
      */
@@ -67,6 +80,15 @@ class Qualifications extends Component
             'hsscPassingYear'     => 'required',
             // 'hsscTotalMarks'      => 'required|numeric |lte:1200',
             'hsscRollNo'           => 'required',
+            'experiences.*.fromDate' => 'required|date',
+            'experiences.*.toDate' => 'required|date|after_or_equal:experiences.*.fromDate',
+            'experiences.*.institute' => 'required|string|max:255',
+            'experiences.*.duration' => 'required|string|max:255',
+            'nursingPassingYear'     => 'required',
+            'nursingRollNo'     => 'required',
+            'nursingMarksObtained'     => 'required',
+            'nursingTotalMarks'     => 'required',
+            'currentJob'     => 'required',
         ];
         // $customRules = [
         //     'hsscMarksObtained' => [
@@ -140,6 +162,18 @@ class Qualifications extends Component
     {
         $this->seatCategories = auth()->user()->seatCategories->pluck('id')->toArray();
         $qualifications = auth()->user()->qualifications;
+        $qualification = $qualifications;
+        if ($qualification) {
+            $this->qualificationId = $qualification->id;
+            $this->experiences = $qualification->experiences ? json_decode($qualification->experiences, true) : [];
+        } else {
+            $this->experiences[] = [
+                'fromDate' => '',
+                'toDate' => '',
+                'institute' => '',
+                'duration' => '',
+            ];
+        }
         if ($qualifications) {
             $this->sscPassed = $qualifications->ssc_exam_passeds_id;
             $this->sscScienceSubjects = $qualifications->ssc_science_subjects;
@@ -161,8 +195,145 @@ class Qualifications extends Component
             $this->biologyObtained = $qualifications?->biology;
             $this->chemisteryObtained = $qualifications?->chemistery;
             $this->seatCategories = auth()->user()->seatCategories->pluck('id')->toArray();
+            $this->nursingPassingYear = $qualifications->nursing_passing_year;
+            $this->nursingRollNo = $qualifications->nursing_roll_no;
+            $this->nursingMarksObtained = $qualifications->nursing_marks_obtained;
+            $this->nursingTotalMarks = $qualifications->nursing_total_marks;
+            $this->currentJob = $qualifications->current_job;
+
         }
     }
+
+
+    public function updatedIsExperience($value)
+    {
+        if ($value) {
+            // If experiences array is empty, add a default experience field
+            if (empty($this->experiences)) {
+                $this->experiences[] = [
+                    'fromDate' => '',
+                    'toDate' => '',
+                    'institute' => '',
+                    'duration' => '',
+                ];
+            }
+        } else {
+            // If "No" is selected, clear the experiences array
+            $this->experiences = [];
+        }
+    }
+
+
+
+
+    public function addExperience()
+    {
+        $this->experiences[] = [
+            'fromDate' => '',
+            'toDate' => '',
+            'institute' => '',
+            'duration' => '',
+        ];
+    }
+
+    public function removeExperience($index)
+    {
+        unset($this->experiences[$index]);
+        $this->experiences = array_values($this->experiences); // Reindex array
+    }
+
+
+    public function updatedExperiences($value, $key)
+    {
+        // $key example => "0.fromDate" OR "1.toDate"
+        $parts = explode('.', $key);
+        $index = $parts[0];
+
+        if (
+            !empty($this->experiences[$index]['fromDate']) &&
+            !empty($this->experiences[$index]['toDate'])
+        ) {
+            $this->calculateDuration($index);
+        }
+    }
+
+    /*public function calculateDuration($index)
+    {
+        try {
+            $from = Carbon::parse($this->experiences[$index]['fromDate']);
+            $to   = Carbon::parse($this->experiences[$index]['toDate']);
+
+            if ($to->lt($from)) {
+                $this->experiences[$index]['duration'] = "";
+                return;
+            }
+
+            // FULL YEARS MONTHS DAYS CALCULATION
+            $interval = $from->diff($to);
+
+            $years  = $interval->y;
+            $months = $interval->m;
+            $days   = $interval->d;
+
+            $durationString = "";
+
+            if ($years > 0) {
+                $durationString .= $years . " Year" . ($years > 1 ? "s " : " ");
+            }
+            if ($months > 0) {
+                $durationString .= $months . " Month" . ($months > 1 ? "s " : " ");
+            }
+            if ($days > 0) {
+                $durationString .= $days . " Day" . ($days > 1 ? "s " : " ");
+            }
+
+            $this->experiences[$index]['duration'] = trim($durationString);
+
+        } catch (\Exception $e) {
+            $this->experiences[$index]['duration'] = "";
+        }
+    }*/
+
+    public function calculateDuration($index)
+    {
+        try {
+            $from = Carbon::parse($this->experiences[$index]['fromDate']);
+            $to   = Carbon::parse($this->experiences[$index]['toDate']);
+
+            if ($to->lt($from)) {
+                $this->experiences[$index]['duration'] = "";
+                return;
+            }
+
+            $interval = $from->diff($to);
+
+            $years  = $interval->y;
+            $months = $interval->m;
+            $days   = $interval->d;
+
+            $parts = [];
+
+            if ($years > 0) {
+                $parts[] = $years . " Year" . ($years > 1 ? "s" : "");
+            }
+
+            if ($months > 0) {
+                $parts[] = $months . " Month" . ($months > 1 ? "s" : "");
+            }
+
+            if ($days > 0) {
+                $parts[] = $days . " Day" . ($days > 1 ? "s" : "");
+            }
+
+            $durationString = implode(", ", $parts);
+
+            $this->experiences[$index]['duration'] = $durationString;
+
+        } catch (\Exception $e) {
+            $this->experiences[$index]['duration'] = "";
+        }
+    }
+
 
     private function calculateAggregate()
     {
@@ -433,6 +604,12 @@ class Qualifications extends Component
             'physics'               => $this->physcisObtained ?? '',
             'biology'               => $this->biologyObtained ?? '',
             'chemistery'            => $this->chemisteryObtained ?? '',
+            'experiences'           =>  json_encode($this->experiences) ?? null,
+            'current_job'           => $this->currentJob,
+            'nursing_roll_no'       => $this->nursingRollNo,
+            'nursing_passing_year'  => $this->nursingPassingYear,
+            'nursing_marks_obtained'=> $this->nursingMarksObtained,
+            'nursing_total_marks'   => $this->nursingTotalMarks,
         ];
     }
     

@@ -6628,9 +6628,6 @@ html {
 .font-\[\'Segeo-UI\'\]{
   font-family: 'Segeo-UI';
 }
-.font-\[\\\'Segeo-UI\\\'\]{
-  font-family: \'Segeo-UI\';
-}
 .font-inter{
   font-family: Inter, sans-serif;
 }
@@ -24670,9 +24667,6 @@ input[type="range"]::-ms-fill-lower{
 }
 .font-\[\'Segeo-UI\'\]{
   font-family: 'Segeo-UI';
-}
-.font-\[\\\'Segeo-UI\\\'\]{
-  font-family: \'Segeo-UI\';
 }
 .font-inter{
   font-family: Inter, sans-serif;

@@ -71,7 +71,7 @@
          style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
         <div>
             <p class=" p-5 md:px-10 md:py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">
-                Choose the District</p>
+                Choose the Diploma</p>
             <hr class="border-t-2 w-full border-[#DAE4EA]">
         </div>
 
@@ -81,17 +81,17 @@
                     Choose the District:
                 </div> -->
 
-                  <div class="mt-5">
-                    <label class="text-black text-lg font-medium font-sans ">Select District <span
-                                class="text-red-600">*</span></label>
-                    <x-select style="padding: 8px 12px; box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
-                              placeholder="Please select Discipline" wire:model.defer="disciplineId"
-                              rightIcon="chevron-down"
-                              option-value="id" option-label="name" :options="$this->allDisciplines"
-                              @keydown.window.enter="event => { if (event.key === 'Enter') event.preventDefault(); }"/>
-                </div>
+{{--                  <div class="mt-5">--}}
+{{--                    <label class="text-black text-lg font-medium font-sans ">Select District <span--}}
+{{--                                class="text-red-600">*</span></label>--}}
+{{--                    <x-select style="padding: 8px 12px; box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"--}}
+{{--                              placeholder="Please select Discipline" wire:model.defer="disciplineId"--}}
+{{--                              rightIcon="chevron-down"--}}
+{{--                              option-value="id" option-label="name" :options="$this->allDisciplines"--}}
+{{--                              @keydown.window.enter="event => { if (event.key === 'Enter') event.preventDefault(); }"/>--}}
+{{--                </div>--}}
 
-                <!-- <div class="flex flex-col md:flex-col lg:flex-row gap-3" >
+                 <div class="flex flex-col md:flex-col lg:flex-row gap-3" >
                     @foreach ($this->allSeats as $seatCategories)
                         <span
                                 class="{{ $seatCategories->id == $seatCategory ? 'mb-2 md:mb-0 transition-colors duration-0 md:mr-2 border border-[#5345ff] rounded-md flex items-center py-2 px-5 bg-[#5345ff]' : 'mb-2 md:mb-0 md:mr-2 border transition-colors duration-0 border-[#5345ff] rounded-md py-2 px-5 flex items-center  bg-[#ffffff]' }}">
@@ -104,7 +104,7 @@
                                 {{ $seatCategories->name }} </span>
                         </span>
                     @endforeach
-                </div> -->
+                </div>
 
                 @error('program')
                 <div class="error text-red-600 mt-2">{{ $message }}</div>

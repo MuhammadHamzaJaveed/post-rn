@@ -302,6 +302,206 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-9 w-full">
+                        <p class=" -ml-10 p-5 md:px-10 py-4 text-2xl font-bold text-[#333333] tracking-[0.29px] font-sans">
+                            Nursing Details
+                        </p>
+                        <hr class="border-t-2 w-full mt-5 border-[#DAE4EA]">
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                                <div class="mt-5">
+                                    <label class="text-black text-lg font-medium font-sans ">Choose Year Of Passing <span
+                                                class="text-red-600">*</span></label>
+                                    <x-select wire:model="nursingPassingYear" placeholder="Choose Year" :options="[
+                                        '2000',
+                                        '2001',
+                                        '2002',
+                                        '2003',
+                                        '2004',
+                                        '2005',
+                                        '2006',
+                                        '2007',
+                                        '2008',
+                                        '2009',
+                                        '2010',
+                                        '2011',
+                                        '2012',
+                                        '2013',
+                                        '2014',
+                                        '2015',
+                                        '2016',
+                                        '2017',
+                                        '2018',
+                                        '2019',
+                                        '2020',
+                                        '2021',
+                                        '2022',
+                                        '2023',
+                                        '2024',
+                                    ]"
+                                              style="padding: 8px 8px;" rightIcon="chevron-down"
+                                              style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);" />
+
+                                </div>
+                                <div class="mt-5">
+                                    <label class="text-black text-lg font-medium font-sans ">Roll No <span
+                                                class="text-red-600">*</span></label>
+                                    <x-input wire:model.defer="nursingRollNo" style="padding: 8px 8px;"
+                                             style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);" type="number" />
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div x-data="{ showAlert: false, popupShown: false }">
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                                    <div class="mt-5">
+                                        <label class="text-black text-lg font-medium font-sans ">Marks Obtained <span
+                                                    class="text-red-600">*</span></label>
+                                        <x-input wire:model.defer="nursingMarksObtained"
+                                                 style="padding: 8px 8px; box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
+                                                 type="number">
+                                        </x-input>
+
+                                    </div>
+
+                                    <div class="mt-5">
+                                        <label class="text-black text-lg font-medium font-sans ">Total Marks <span
+                                                    class="text-red-600">*</span></label>
+                                        <x-input wire:model.defer="nursingTotalMarks" style="padding: 8px 8px;"
+                                                 style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);" type="number"/>
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="mt-9">
+                        <hr class="border-t-2 w-full mt-5 border-[#DAE4EA]">
+                        <div>
+                            <p class=" -ml-10 p-5 md:px-10 py-4 text-2xl font-bold text-[#333333] tracking-[0.29px] font-sans">
+                                Experience
+                            </p>
+                            <hr class="border-t-2 w-full border-[#DAE4EA]">
+                        </div>
+
+
+                        <div class="mt-5">
+                            <label class="text-black text-lg font-medium font-sans ">Current Placement of Job
+                                <span class="text-red-600">*</span>
+                            </label>
+                            <x-input wire:model.defer="currentJob" placeholder="Enter Current Job"
+                                     style="padding: 8px 8px;"
+                                     style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);" />
+
+                        </div>
+
+
+
+                        <div>
+                            <p class=" -ml-10 p-5 mt-5 md:px-10 py-4 text-lg font-medium text-[#333333] tracking-[0.29px] font-sans">
+                              Add Experiences
+                            </p>
+                        </div>
+                            @foreach($experiences as $index => $experience)
+                                <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-7 border p-4 rounded-lg shadow-sm relative">
+                                    {{--<button type="button" class="absolute top-0 right-0 text-white px-2 py-1 rounded-full"
+                                            wire:click="removeExperience({{ $index }})"
+                                            @if(count($experiences) == 1) disabled @endif>
+                                        <x-heroicon-o-trash class="w-6 h-6 text-red-500"/>
+                                        <span wire:loading wire:target="removeExperience">
+                                            <p class="flex"><x-loader /></p>
+                                        </span>
+                                    </button>--}}
+                                    <button type="button" class="absolute top-0 right-0 text-white px-2 py-1 rounded-full"
+                                            wire:click="removeExperience({{ $index }})"
+                                            @if(count($experiences) == 1) disabled @endif>
+                                        <span wire:loading.remove wire:target="removeExperience({{ $index }})">
+                                            <x-heroicon-o-trash class="w-6 h-6 text-red-500"/>
+                                        </span>
+                                        <span wire:loading wire:target="removeExperience({{ $index }})">
+                                            <p class="flex">
+                                                <x-red-loader class="w-6 h-6 text-red-500"/>
+                                            </p>
+                                        </span>
+                                    </button>
+                                    <div>
+                                        <label class="text-black text-lg font-medium font-sans">Institute<span
+                                                    class="text-red-600">*</span></label>
+                                        <x-input placeholder="Enter Institute Name"
+                                                 wire:model="experiences.{{ $index }}.institute"
+                                                 style="padding: 8px 8px; box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"/>
+                                    </div>
+                                    <div>
+                                        <!-- <label class="text-black text-lg font-medium font-sans">From Date <span
+                                                class="text-red-600">*</span></label>
+                                    <x-datetime-picker placeholder="Select from date"
+                                                       wire:model.defer="experiences.{{ $index }}.fromDate"
+                                                       class="py-2 px-3 shadow-none outline-none align-middle"
+                                                       display-format="DD-MM-YYYY"
+                                                       style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
+                                                       without-time :withoutTimezone="true"/> -->
+
+                                        <label class="text-black text-lg font-medium font-sans">From Date <span class="text-red-600">*</span></label>
+                                        <input type="date"
+                                               placeholder="Select from date"
+                                               wire:model="experiences.{{ $index }}.fromDate"
+                                               class="py-2 px-3 shadow-none outline-none align-middle text-sm text-gray-700 rounded-md w-full"
+                                               style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
+                                        />
+
+                                    </div>
+
+                                    <div>
+                                        <!-- <label class="text-black text-lg font-medium font-sans">To Date <span
+                                                class="text-red-600">*</span></label>
+                                    <x-datetime-picker placeholder="Select to date"
+                                                       wire:model.defer="experiences.{{ $index }}.toDate"
+                                                       class="py-2 px-3 shadow-none outline-none align-middle"
+                                                       display-format="DD-MM-YYYY"
+                                                       style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
+                                                       without-time :withoutTimezone="true"/> -->
+
+
+                                        <label class="text-black text-lg font-medium font-sans">To Date <span class="text-red-600">*</span></label>
+                                        <input type="date"
+                                               placeholder="Select to date"
+                                               wire:model="experiences.{{ $index }}.toDate"
+                                               class="py-2 px-3 shadow-none outline-none align-middle text-sm text-gray-700 rounded-md w-full"
+                                               style="box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label class="text-black text-lg font-medium font-sans">Duration
+                                            {{--<span
+                                                    class="text-red-600">*
+                                            </span>--}}
+                                        </label>
+                                        <x-input placeholder=""
+                                                 readonly
+                                                 wire:model="experiences.{{ $index }}.duration"
+                                                 style="padding: 8px 8px; box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"/>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            {{--<button type="button" wire:click="addExperience"
+                                    class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">
+
+                            </button>--}}
+                            <button wire:click="addExperience"
+                                    class="bg-[#1D4ED8] mt-4 hover:bg-[#4338CA] text-sm px-3 py-2 md:px-6 md:py-3 mb-2 rounded-lg gap-2"
+                                    type="button" wire:keydown.enter.prevent="addExperience">
+                            <span class="flex flex-row items-center gap-2 justify-center text-white font-semibold text-base">
+                                + Add Experience
+                                <span wire:loading wire:target="addExperience">
+                                    <p class="flex"><x-loader/></p>
+                                </span>
+                            </span>
+                            </button>
+                    </div>
                 </div>
 
             </div>

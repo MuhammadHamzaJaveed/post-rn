@@ -41,6 +41,12 @@ class Qualification extends Model
         'physics',
         'biology',
         'chemistery',
+        'nursing_passing_year',
+        'nursing_roll_no',
+        'nursing_marks_obtained',
+        'nursing_total_marks',
+        'current_job',
+        'experiences',
     ];
 
     /**

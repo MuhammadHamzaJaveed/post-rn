@@ -162,7 +162,7 @@
                     <x-select
                             style=" padding: 8px 12px;box-shadow: none;box-shadow: none; border: 1px solid rgba(0, 0, 0, 0.12);"
                             placeholder="Please select Gender" wire:model.defer="genderId" rightIcon="chevron-down"
-                            option-value="id" option-label="name" :options="$this->allGenders"
+                            option-value="id" option-label="name" :options="$this->allGenders" disabled
                             @keydown.window.enter="event => { if (event.key === 'Enter') event.preventDefault(); }" />
                 </div>
 
