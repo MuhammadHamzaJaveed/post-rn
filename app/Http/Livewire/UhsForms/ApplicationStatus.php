@@ -337,7 +337,7 @@ class ApplicationStatus extends Component
             // Challan ID and Application ID
             'challanId' => auth()->user()->challan_id,
             'applicationId' => auth()->user()->id,
-
+            'experiences' => $this->experiences,
             // Personal Information
             'cnic' => $this->personalDetails->cnic_passport,
             'name' => auth()->user()->name,
@@ -374,6 +374,10 @@ class ApplicationStatus extends Component
             'sscTotalMarks' => $this->qualifications->ssc_total_marks,
             'hsscTotalMarks' => $this->qualifications->hssc_total_marks,
             'hsscRollNumber' => $this->qualifications->hssc_roll_no,
+            'nursingPassingYear' => $this->qualifications->nursing_passing_year,
+            'nursingRollNumber' => $this->qualifications->nursing_roll_no,
+            'nursingObtainedMarks' => $this->qualifications->nursing_marks_obtained,
+            'nursingTotalMarks' => $this->qualifications->nursing_total_marks,
             'physics' => $this->qualifications->physics_score,
             'chemistry' => $this->qualifications->chemistry_score,
             'biology' => $this->qualifications->biology_score,

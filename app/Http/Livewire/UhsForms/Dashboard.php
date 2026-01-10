@@ -40,6 +40,10 @@ class Dashboard extends Component
 
     public $challanStatus = false;
 
+    public $experiences;
+
+
+
     /**
      * @return void
      */
@@ -85,6 +89,7 @@ class Dashboard extends Component
         }
 
         $this->seatCategories = $user->seatCategories->pluck('id')->toArray();
+
 
         if(empty($this->challanStatus($user->challan_id)))
         {
@@ -384,7 +389,7 @@ class Dashboard extends Component
                 $mbbsCollegeForeignerAsOpenMeritPreferences = auth()->user()->mbbsCollegeForeignerAsOpenMeritPreferences->pluck('college_pref')->toArray();
                 $bdsCollegePreferences = auth()->user()->bdsCollegePreferences->pluck('college_pref')->toArray();
                 $bdsCollegeForeignerAsOpenMeritPreferences = auth()->user()->bdsCollegeForeignerAsOpenMeritPreferences->pluck('college_pref')->toArray();
-
+                $experiences = collect(json_decode($user?->qualifications?->experiences,true));
                 $pdfData = [
                     'title' => 'Sample PDF',
                     // Challan ID and Application ID
@@ -466,6 +471,7 @@ class Dashboard extends Component
                     'bdsPreference' => !empty($bdsCollegePreferences) ? json_decode($bdsCollegePreferences[0], true) : [],
                     'mbbsForeignAsOpenMeritPreference' => !empty($mbbsCollegeForeignerAsOpenMeritPreferences) ? json_decode($mbbsCollegeForeignerAsOpenMeritPreferences[0], true) : [],
                     'bdsForeignAsOpenMeritPreference' => !empty($bdsCollegeForeignerAsOpenMeritPreferences) ? json_decode($bdsCollegeForeignerAsOpenMeritPreferences[0], true) : [],
+                    'experiences' => $experiences,
                     'image_pages' => false,
                 ];
 

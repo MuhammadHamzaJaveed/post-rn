@@ -36,22 +36,12 @@
             <div style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px;">  Private
             </div>
         </div> -->
-        @if ($foreigner == 1)
-            <div style="display: flex; margin-top: 10px; width: 100%; justify-content: space-between;">
-                <div
-                        style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
-                    Part 2: Overseas Pakistani/ Foreigner</div>
-                <div style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px;"> Yes</div>
-            </div>
-        @endif
-        @if ($foreigner == 0)
-            <div style="display: flex; margin-top: 10px; width: 100%; justify-content: space-between;">
-                <div
-                        style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
-                    Part 2: Overseas Pakistani/ Foreigner</div>
-                <div style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px;"> No</div>
-            </div>
-        @endif
+        <div style="display: flex; margin-top: 10px; width: 100%; justify-content: space-between;">
+            <div
+                    style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
+                Part 1: Apply on Following Diploma</div>
+            <div style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px;">{{auth()->user()->seat->name}}</div>
+        </div>
 {{--        <div style="display: flex; margin-top: 10px; width: 100%; justify-content: space-between;">--}}
 {{--            <div--}}
 {{--                    style=" text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">--}}
@@ -72,7 +62,7 @@
         <div style="margin-top: 5px;">
             <div
                     style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
-                Part 3: Personal Information</div>
+                Part 2: Personal Information</div>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                     <td style="width: 50%; vertical-align: top; font-size: small; text-align: left;">
@@ -189,7 +179,7 @@
         <div style="display: flex; margin-top: 20px; width: 100%; justify-content: space-between;">
             <div
                     style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
-                Part 4: Qualification Details</div>
+                Part 3: Qualification Details</div>
 
             <table style="margin-top:10px; width: 100%; border-collapse: collapse;">
                 <tr>
@@ -251,10 +241,91 @@
             </table>
         </div>
 
-        <div style="display: flex; margin-top: 100px; width: 100%; justify-content: space-between;">
+
+        <div style="display: flex; margin-top: 20px; width: 100%; justify-content: space-between;">
+            <div
+                    style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
+                Part 4: Nursing Test Details
+            </div>
+            @if ($nursingRollNumber !== null)
+                <table style="margin-top:10px; width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td
+                                style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left; font-weight: bold;">
+                            Nursing Roll No
+                        </td>
+                        <td style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left;">
+                            {{ $nursingRollNumber }}</td>
+                    </tr>
+                    <tr>
+                        <td
+                                style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left; font-weight: bold;">
+                            Nursing Passing Year
+                        </td>
+                        <td style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left;">
+                            {{ $nursingPassingYear }}</td>
+                    </tr>
+                    <tr>
+                        <td
+                                style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left; font-weight: bold;">
+                            Nursing Obtained Marks
+                        </td>
+                        <td style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left;">
+                            {{ $nursingObtainedMarks }}</td>
+                    </tr>
+                    <tr>
+                        <td
+                                style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left; font-weight: bold;">
+                            Nursing Total Marks
+                        </td>
+                        <td style="border: 1px solid #000; padding: 5px; font-size: small;text-align: left;">
+                            {{ $nursingTotalMarks }}</td>
+                    </tr>
+
+                </table>
+            @endif
+        </div>
+
+        <div style="display: flex; margin-top: 30px; width: 100%; justify-content: space-between;">
+            <div
+                    style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
+                Part 5: Current Placement of Job</div>
+            <div style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px;">{{auth()->user()->qualifications->current_job}}</div>
+        </div>
+
+        <div style="display: flex; margin-top: 20px; width: 100%; justify-content: space-between;">
+            <div style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
+                Part 6: Experience Details
+            </div>
+            {{--Student Record--}}
+            <table style="width: 100%; margin-top: 5%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                <thead>
+                <tr style="background-color: #f1f5f9; font-weight: bold;">
+                    <th style="padding: 8px; border: 1px solid #ddd;">Sr.</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">From Date</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">To Date</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">Institute</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">Duration</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($experiences as $key => $experience)
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{{ $key + 1 }}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{{ \Carbon\Carbon::parse($experience['fromDate'])->format('d-M-Y') }}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{{ \Carbon\Carbon::parse($experience['toDate'])->format('d-M-Y') }}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{{ $experience['institute'] }}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">{{ $experience['duration'] }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div style="page-break-before: always;"></div>
+        <div style="display: flex;  width: 100%; justify-content: space-between;">
             <div
                     style="font-size: small; text-align:left; font-size: large;  font-weight: 100; margin-top: 10px; color:green">
-                Part 5: College Preference</div>
+                Part 7: College Preference</div>
 
             <!-- For Morning Preferences -->
                 @if (!empty($morningPreference))
@@ -273,49 +344,48 @@
                     </div>
                 @endif
 
-            @if (auth()->user()->seat_id === 2)
-                @if (!empty($eveningPreference))
-                    <div>
-                        <div style="margin-top: 20px;">Evening Preferences</div>
-                        <hr style="border: 1px solid #000; margin: 10px 0;">
-                        <table>
-                            <tbody>
-                            @foreach ($eveningPreference as $index => $preference)
-                                <tr>
-                                    <td>{{ $index + 1 }}. {{ $preference['name'] }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                @endif
-            @endif
+{{--            @if (auth()->user()->seat_id === 2)--}}
+{{--                @if (!empty($eveningPreference))--}}
+{{--                    <div>--}}
+{{--                        <div style="margin-top: 20px;">Evening Preferences</div>--}}
+{{--                        <hr style="border: 1px solid #000; margin: 10px 0;">--}}
+{{--                        <table>--}}
+{{--                            <tbody>--}}
+{{--                            @foreach ($eveningPreference as $index => $preference)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{ $index + 1 }}. {{ $preference['name'] }}</td>--}}
+{{--                                </tr>--}}
+{{--                            @endforeach--}}
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--            @endif--}}
 
-            @if (auth()->user()->seat_id === 3)
-                @if (!empty($morningEveningPreference))
-                    <div>
-                        <div style="margin-top: 20px;">Evening Preferences</div>
-                        <hr style="border: 1px solid #000; margin: 10px 0;">
-                        <table>
-                            <tbody>
-                            @foreach ($morningEveningPreference as $index => $preference)
-                                <tr>
-                                    <td>{{ $index + 1 }}. {{ $preference['name'] }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                @endif
-            @endif
+{{--            @if (auth()->user()->seat_id === 3)--}}
+{{--                @if (!empty($morningEveningPreference))--}}
+{{--                    <div>--}}
+{{--                        <div style="margin-top: 20px;">Evening Preferences</div>--}}
+{{--                        <hr style="border: 1px solid #000; margin: 10px 0;">--}}
+{{--                        <table>--}}
+{{--                            <tbody>--}}
+{{--                            @foreach ($morningEveningPreference as $index => $preference)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{ $index + 1 }}. {{ $preference['name'] }}</td>--}}
+{{--                                </tr>--}}
+{{--                            @endforeach--}}
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--            @endif--}}
         </div>
         <div style="page-break-before: always;"></div>
 
-
-        <div style="display: flex; margin-top: 100px; width: 100%; justify-content: space-between;">
+        <div style="display: flex; width: 100%; justify-content: space-between;">
             <div
                     style="font-size: small; text-align: left;font-size:large; color:green; font-weight: 100; margin-top: 10px;">
-                Part 6: Undertaking By the Candidate</div>
+                Part 8: Undertaking By the Candidate</div>
             <div
                     style="font-size: small; text-align: left; font-weight: 100; margin-top: 10px; line-height: 1.5;word-spacing: 2px; margin-bottom: 10px;">
                 I <span style="color:red; font-weight: bold;"> {{ $name }} </span> S/D/O <span
@@ -395,7 +465,7 @@
         <div style="page-break-before: always;"></div>
 
         <div style="display: flex; width: 100%; justify-content: space-between;">
-            <div style="font-size: small; text-align: left; font-size: large; color: green; font-weight: 100; ">Part 7:
+            <div style="font-size: small; text-align: left; font-size: large; color: green; font-weight: 100; ">Part 9:
                 Uploaded Documents </div>
             <div style="margin-top: 10px; font-size: medium; flex-grow: 1;">
                 <table style="width: 100%; border-collapse: collapse;">
@@ -647,7 +717,15 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    Stay Card Image </div>
+                                    <p>
+                                        @if(auth()->user()->seat_id == 1)
+                                            One-Year Post-Basic Specialty
+                                        @else
+                                            Midwifery
+                                        @endif
+                                        Diploma Image
+                                    </p>
+                                     </div>
                                 <img style="width: 100%; height: auto;" src="{{ $stayCardImage }}"
                                      alt="placeholder image">
                             </div>
@@ -732,7 +810,7 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    MDCAT Result Image </div>
+                                    General Nursing Diploma Image </div>
                                 <img style="width: 100%; height: auto;" src="{{ $mdcatResultCardImage }}"
                                      alt="placeholder image">
                             </div>
@@ -776,7 +854,7 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    Extra Document Image 1</div>
+                                    Experience Document Image 1</div>
                                 <img style="width: 100%; height: auto;" src="{{ $userDocumentRequirementOnePhoto }}"
                                      alt="placeholder image">
                             </div>
@@ -789,7 +867,7 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    Extra Document Image 2</div>
+                                    Experience Document Image 2</div>
                                 <img style="width: 100%; height: auto;" src="{{ $userDocumentRequirementTwoPhoto }}"
                                      alt="placeholder image">
                             </div>
@@ -803,7 +881,7 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    Extra Document Image 3</div>
+                                    Experience Document Image 3</div>
                                 <img style="width: 100%; height: auto;"
                                      src="{{ $userDocumentRequirementThreePhoto }}" alt="placeholder image">
                             </div>
@@ -817,7 +895,7 @@
                             <div style="text-align: center; margin-top: 20px;">
                                 <div
                                         style="margin-top: 10px; font-size: small; text-align: center; font-size: small; color: red; font-weight: 100; ">
-                                    Extra Document Image 4</div>
+                                    Experience Document Image 4</div>
                                 <img style="width: 100%; height: auto;" src="{{ $userDocumentRequirementFourPhoto }}"
                                      alt="placeholder image">
                             </div>

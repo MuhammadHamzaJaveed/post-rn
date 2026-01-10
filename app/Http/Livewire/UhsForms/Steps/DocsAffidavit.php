@@ -1366,11 +1366,6 @@ class DocsAffidavit extends Component
             $this->mediaServices->updateOrCreateUserProfileImage([
                 'id' => auth()->user()->userDocumentRequirementOnePhoto?->id,
             ], $this->formatImageData($this->extraDocRequire1, 'userDocumentRequirementOnePhoto'));
-        } else {
-            if (auth()->user()->userDocumentRequirementOnePhoto) {
-                Storage::delete(auth()->user()->userDocumentRequirementOnePhoto->path);
-                auth()->user()->userDocumentRequirementOnePhoto->delete();
-            }
         }
     }
 
@@ -1383,11 +1378,6 @@ class DocsAffidavit extends Component
             $this->mediaServices->updateOrCreateUserProfileImage([
                 'id' => auth()->user()->userDocumentRequirementTwoPhoto?->id,
             ], $this->formatImageData($this->extraDocRequire2, 'userDocumentRequirementTwoPhoto'));
-        } else {
-            if (auth()->user()->userDocumentRequirementTwoPhoto) {
-                Storage::delete(auth()->user()->userDocumentRequirementTwoPhoto->path);
-                auth()->user()->userDocumentRequirementTwoPhoto->delete();
-            }
         }
     }
 
@@ -1400,11 +1390,6 @@ class DocsAffidavit extends Component
             $this->mediaServices->updateOrCreateUserProfileImage([
                 'id' => auth()->user()->userDocumentRequirementThreePhoto?->id,
             ], $this->formatImageData($this->extraDocRequire3, 'userDocumentRequirementThreePhoto'));
-        } else {
-            if (auth()->user()->userDocumentRequirementThreePhoto) {
-                Storage::delete(auth()->user()->userDocumentRequirementThreePhoto->path);
-                auth()->user()->userDocumentRequirementThreePhoto->delete();
-            }
         }
     }
 
@@ -1417,11 +1402,6 @@ class DocsAffidavit extends Component
             $this->mediaServices->updateOrCreateUserProfileImage([
                 'id' => auth()->user()->userDocumentRequirementFourPhoto?->id,
             ], $this->formatImageData($this->extraDocRequire4, 'userDocumentRequirementFourPhoto'));
-        } else {
-            if (auth()->user()->userDocumentRequirementFourPhoto) {
-                Storage::delete(auth()->user()->userDocumentRequirementFourPhoto->path);
-                auth()->user()->userDocumentRequirementFourPhoto->delete();
-            }
         }
     }
 
