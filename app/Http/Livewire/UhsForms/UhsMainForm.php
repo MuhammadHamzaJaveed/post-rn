@@ -46,6 +46,7 @@ class UhsMainForm extends Component
     public function mount()
     {
         $user = auth()->user();
+        $this->goToStep(7);
             if ($user->submitted_at && isset($user->otps->is_verified) && $user->otps->is_verified == 1) {
             $this->completeStep('step1Completed');
         } else {

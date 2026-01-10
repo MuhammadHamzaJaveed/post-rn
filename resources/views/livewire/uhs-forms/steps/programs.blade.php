@@ -13,16 +13,16 @@
                         <span class="text-green-900  pr-3">
                             <x-heroicon-s-light-bulb class="h-6 w-6 text-green-800" />
                         </span>
-                        <p>Before completing this admission form, please review the Admission Policy for Public Sector Nursing Colleges in Punjab for the 2025-26 session. This policy was issued by the Specialized Healthcare and Medical Education Department, Government of Punjab and can be accessed at (link to policy).
+                        <p>Before completing this admission form, please review the Admission Policy for Public Sector Post RN BSc Nursing Colleges in Punjab for the 2025-26 session. This policy was issued by the Specialized Healthcare and Medical Education Department, Government of Punjab and can be accessed at (link to policy).
                         </p>
                     </li>
                     <li class="pt-3 text-lg font-normal flex flex-row"><span
                             class="text-green-900  pr-3"><x-heroicon-s-light-bulb class="h-6 w-6 text-green-800" />
-                        </span>This application portal is for BS Nursing (Generic) program in Public Sector Nursing Colleges. Candidates may apply for Morning or Evening separately or for boht sessions through one designated portal for each program.
+                        </span>This application portal is for Post RN BS Nursing (Generic) program in Public Sector Nursing Colleges. Candidates may apply for Morning or Evening separately or for boht sessions through one designated portal for each program.
                     </li>
                     <li class="pt-3 text-lg font-normal flex flex-row"><span
                             class="text-green-900  pr-3"><x-heroicon-s-light-bulb class="h-6 w-6 text-green-800" />
-                        </span> Only applications submitted through the official portals of the University of Health Sciences Lahore will be accepted. No college or other institution is authorized to process  Nursing applications through any other means.
+                        </span> Only applications submitted through the official portals of the University of Health Sciences Lahore will be accepted. No college or other institution is authorized to process Post RN BSc Nursing applications through any other means.
                     </li>
                     <li class="pt-3 text-lg font-normal flex flex-row"><span
                             class="text-green-900  pr-3"><x-heroicon-s-light-bulb class="h-6 w-6 text-green-800" />

@@ -62,7 +62,7 @@ class CollegeSeeder extends Seeder
         return [
             // Nursing Colleges with all district fields
             [
-                'name' => 'College of Nursing, Sir Ganga Ram Hospital, (FJMU) Lahore',
+                'name' => 'Postgraduate College of Nursing, Punjab, Lahore',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 // Initially all 1 - you can set true/1 later
@@ -104,7 +104,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 1,
             ],
             [
-                'name' => 'College of Nursing, Nishtar Hospital, Multan',
+                'name' => 'College of Nursing Allama Iqbal Medical College/ Jinnah Hospital, Lahore',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 1,
@@ -145,7 +145,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 1,
             ],
             [
-                'name' => 'College of Nursing, DHQ Hospital, Okara',
+                'name' => 'College of Nursing Holy Family Hospital, Rawalpindi',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 1,
@@ -186,7 +186,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 1,
             ],
             [
-                'name' => 'College of Nursing, B.V. Hospital, Bahawalpur',
+                'name' => 'College of Nursing, Nishter Hospital, Multan',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 1,
@@ -227,7 +227,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 1,
             ],
             [
-                'name' => 'College of Nursing, Allama Iqbal Memorail Hospital, Sialkot',
+                'name' => 'College of Nursing Sir Ganga Ram Hospital Lahore',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -268,7 +268,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'College of Nursing, Allama Iqbal Teaching Hospital, Dera Ghazi Khan',
+                'name' => 'College of Nursing, DHQ Hospital, Muzaffargarh',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -309,7 +309,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'College of Nursing, DHQ Hospital, Bahawalnagar',
+                'name' => 'College of Nursing, Allama Iqbal Memorial Teaching Hospital, Sialkot',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -350,7 +350,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'College of Nursing, DHQ Hospital, Chakwal',
+                'name' => 'College of Nursing, King Edward Medical University Mayo Hospital Lahore',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -391,7 +391,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'Collegeof Nursing, DHQ Hospital, Sahiwal',
+                'name' => 'College of Nursing, Sheikh Zayed Hospital Rahim Yar Khan',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -432,7 +432,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'College of Nursing, DHQ Hospital, Attock',
+                'name' => 'College of Nursing, Allama Iqbal Hospital, Dera Ghazi Khan',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,
@@ -473,7 +473,7 @@ class CollegeSeeder extends Seeder
                 'layyah' => 0,
             ],
             [
-                'name' => 'College of Nursing, DHQ Hospital, Jhang',
+                'name' => 'College of Nursing, QAMC, B.V. Hospital Bahawalpur',
                 'is_diploma' => 0,
                 'is_mcps' => 1,
                 'lahore' => 0,

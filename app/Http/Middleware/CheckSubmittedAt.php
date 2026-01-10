@@ -17,7 +17,7 @@ class CheckSubmittedAt
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if ($user->submitted_at == null || (blank(auth()->user()->morningCollegePreferences) && blank(auth()->user()->eveningCollegePreferences) && blank(auth()->user()->morningEveningCollegePreferences))) {
+        if ($user->submitted_at == null || (blank(auth()->user()->morningCollegePreferences))) {
             // User has not submitted, redirect to 'uhs-form'
             return redirect()->route('uhs-form');
         }

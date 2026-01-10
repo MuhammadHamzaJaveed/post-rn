@@ -185,7 +185,12 @@ class DocsAffidavit extends Component
                 'fatherCnicBackSide' => ['required', 'image', 'max:1024'],
             ];
         }
+        if(empty(auth()->user()->userSignatureImage) && empty($this->signature)){
+            $rules += [
+                'signature' => ['required', 'image', 'max:1024'],
+            ];
 
+        }
         if (empty(auth()->user()->userColorPhoto) && empty($this->photo))
         {
 
@@ -195,19 +200,26 @@ class DocsAffidavit extends Component
         }
 
 
-
-
-        if(empty(auth()->user()->userSignatureImage) && empty($this->signature)){
+        if(empty(auth()->user()->userMdcatResultCardPhoto) && empty($this->mdcatResultCard)){
             $rules += [
-                'signature' => ['required', 'image', 'max:1024'],
+                'mdcatResultCard' => ['required', 'image', 'max:1024'],
             ];
 
         }
 
+        if(empty(auth()->user()->userStayCardPhoto) && empty($this->stayCard)){
+            $rules += [
+                'stayCard' => ['required', 'image', 'max:1024'],
+            ];
 
+        }
 
+        if(empty(auth()->user()->userDocumentRequirementOnePhoto) && empty($this->extraDocRequire1)){
+            $rules += [
+                'extraDocRequire1' => ['required', 'image', 'max:1024'],
+            ];
 
-
+        }
         return $rules;
     }
 

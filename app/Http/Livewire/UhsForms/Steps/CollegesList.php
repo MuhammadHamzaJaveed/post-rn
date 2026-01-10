@@ -37,21 +37,20 @@ class CollegesList extends Component
             'agreed'             => 'required | accepted',
         ];
 
-        if (auth()->user()->seat_id == 1 || auth()->user()->seat_id == 3)
-        {
+
             $rules += [
-                'selectedMorningList'    => "required | array | $minRule",
+                'selectedMorningList'    => "required | array",
             ];
-        }
 
 
-        if (auth()->user()->seat_id == 2 || auth()->user()->seat_id == 3)
-        {
-            $rules += [
-                'selectedEveningList'
-                => "required | array | $minRule",
-            ];
-        }
+
+//        if (auth()->user()->seat_id == 2 || auth()->user()->seat_id == 3)
+//        {
+//            $rules += [
+//                'selectedEveningList'
+//                => "required | array | $minRule",
+//            ];
+//        }
 
         return $rules;
 
@@ -266,19 +265,19 @@ class CollegesList extends Component
     {
         $colleges = College::query();
         $user = auth()->user();
-        $gender = $user->personalDetails->gender()->pluck('name')->first();
-        if ($gender == 'Male' || $gender == 'Other') {
-            $colleges->where('isFemale', 0);
-        }
-        else
-        {
-            $colleges->where('isFemale', 1);
-        }
-
-        // Seat-based filter: show evening colleges only for seat_id 2 or 3
-        if (!in_array($user->seat_id, [2, 3])) {
-            $colleges->where('is_evening', 0);
-        }
+//        $gender = $user->personalDetails->gender()->pluck('name')->first();
+//        if ($gender == 'Male' || $gender == 'Other') {
+//            $colleges->where('isFemale', 0);
+//        }
+//        else
+//        {
+//            $colleges->where('isFemale', 1);
+//        }
+//
+//        // Seat-based filter: show evening colleges only for seat_id 2 or 3
+//        if (!in_array($user->seat_id, [2, 3])) {
+//            $colleges->where('is_evening', 0);
+//        }
 
         return $colleges->get();
     }
@@ -469,15 +468,15 @@ class CollegesList extends Component
             return;
         }
         $this->saveMorningList();
-        if($user->seat_id == 2)
-        {
-        $this->saveEveningList();
-        }
-
-        if ($user->seat_id == 3)
-        {
-        $this->saveMorningEveningList();
-        }
+//        if($user->seat_id == 2)
+//        {
+//        $this->saveEveningList();
+//        }
+//
+//        if ($user->seat_id == 3)
+//        {
+//        $this->saveMorningEveningList();
+//        }
         // $this->userServices->updateUser([
             //     'aggregate' => $this->calculateAggregate(),
             //     'aggregate_overseas' => $this->calculateOverseasAggregate(),

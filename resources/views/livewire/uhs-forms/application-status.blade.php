@@ -55,20 +55,14 @@
  style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
  <div>
      <p class="px-5 md:px-10 py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">
-         Apply On Following Seat
+         Apply On Diploma
      </p>
      <hr class="border-t-2 w-full border-[#DAE4EA]">
  </div>
  <div class="p-5 md:p-10">
          <div>
-             <ol class="list-decimal ml-12">
-                 @if(auth()->user()->seat_id != 2)
-                     <li>Morning</li>
-                 @endif
-                 @if(auth()->user()->seat_id == 2 || auth()->user()->seat_id == 3)
-                     <li>Evening</li>
-                 @endif
-
+             <ol class="ml-12">
+                 <li>{{auth()->user()->seat->name}}</li>
              </ol>
          </div>
      
@@ -287,47 +281,41 @@
     </div>
 
 
-    {{-- Admission Test Section --}}
-    {{-- <div class="mt-7 mb-7 bg-white rounded-lg"
+     {{--Admission Test Section --}}
+     <div class="mt-7 mb-7 bg-white rounded-lg"
         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
         <div>
-            <p class=" px-5 md:px-10 py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">Admission
-                Test</p>
+            <p class=" px-5 md:px-10 py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">Nursing
+                Test Detail</p>
             <hr class="border-t-2 w-full border-[#DAE4EA]">
-        </div> --}}
+        </div>
 
         {{-- MDCAT Test Information --}}
-        {{-- @if (auth()->user()->foreigner == 0)
-            @if ($admissionTest->md_cat_cnic !== null)
+            @if ($qualifications->nursing_roll_no !== null)
                 <div class="p-5 md:p-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-3">
                         <div class="flex flex-col">
-                            <label class="text-[#8B939B] text-lg font-medium ">MDCAT Roll No </label>
-                            <p class="text-black text-xl font-semibold"> {{ $admissionTest->md_cat_cnic }} </p>
+                            <label class="text-[#8B939B] text-lg font-medium ">Nursing Roll No </label>
+                            <p class="text-black text-xl font-semibold"> {{ $qualifications->nursing_roll_no }} </p>
                         </div>
 
                         <div class="flex flex-col">
-                            <label class="text-[#8B939B] text-lg font-medium ">MDCAT Center</label>
-                            <p class="text-black text-xl font-semibold">{{ $admissionTest->mdcatCenter->name }}</p>
+                            <label class="text-[#8B939B] text-lg font-medium ">Nursing Passing Year</label>
+                            <p class="text-black text-xl font-semibold">{{ $qualifications->nursing_passing_year}}</p>
                         </div>
 
                         <div class="flex flex-col">
-                            <label class="text-[#8B939B] text-lg font-medium ">Marks Obtained (Out of 200)</label>
-                            <p class="text-black text-xl font-semibold">{{ $admissionTest->md_cat_obtained_marks }}
+                            <label class="text-[#8B939B] text-lg font-medium ">Nursing Obtained Marks</label>
+                            <p class="text-black text-xl font-semibold">{{ $qualifications->nursing_marks_obtained }}
                             </p>
                         </div>
                         <div class="flex flex-col">
-                            <label class="text-[#8B939B] text-lg font-medium ">Applicant Cnic / Passport Number</label>
-                            <p class="text-black text-xl font-semibold">{{ $personalDetails->cnic_passport }}</p>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[#8B939B] text-lg font-medium ">Passing Year</label>
-                            <p class="text-black text-xl font-semibold">{{ $admissionTest?->mdcatPassingYear?->name }}</p>
+                            <label class="text-[#8B939B] text-lg font-medium ">Nursing Total Marks</label>
+                            <p class="text-black text-xl font-semibold">{{ $qualifications->nursing_total_marks}}</p>
                         </div>
                     </div>
                 </div>
             @endif
-        @endif --}}
 
 
         {{-- SAT Test Information --}}
@@ -465,6 +453,85 @@
         @endif --}}
     </div>
 
+    {{-- Experience --}}
+
+    <div class="mt-7 mb-7 bg-white rounded-lg"
+         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
+        <div>
+            <p class="px-5 md:px-10 py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">
+                Current Placement of Job
+            </p>
+            <hr class="border-t-2 w-full border-[#DAE4EA]">
+        </div>
+        <div class="p-5 md:p-10">
+            <div>
+                <ol class="ml-12">
+                    <li>{{ $qualifications->current_job }}</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="mt-7 mb-7 bg-white rounded-lg"
+         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
+        <div>
+            <p class=" px-5 md:px-10 py-4 text-2xl font-medium text-[#333333] tracking-[0.29px] font-sans">Experience
+                Details</p>
+            <hr class="border-t-2 w-full border-[#DAE4EA]">
+        </div>
+        <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
+            <thead class="bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-bold text-left text-xs  text-gray-500 uppercase tracking-wider">
+                    Sr.
+                </th>
+                <th scope="col" class="px-6 py-3  font-bold text-left text-xs text-gray-500 uppercase tracking-wider">
+                    From Date
+                </th>
+                <th scope="col" class="px-6 py-3 font-bold text-left text-xs  text-gray-500 uppercase tracking-wider">
+                    To Date
+                </th>
+                <th scope="col" class="px-6 py-3  font-bold text-left text-xs  text-gray-500 uppercase tracking-wider">
+                    Institute
+                </th>
+                <th scope="col" class="px-6 py-3 font-bold text-left text-xs  text-gray-500 uppercase tracking-wider">
+                    Duration
+                </th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            @foreach($this->experiences as $key => $experience)
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">
+                                    {{ $key + 1 }}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">{{ \Carbon\Carbon::parse($experience['fromDate'])->format('d-M-Y') }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">{{ \Carbon\Carbon::parse($experience['toDate'])->format('d-M-Y') }}</div>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-900 truncate overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
+                        {{ $experience['institute'] }}
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-900 truncate overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
+                        {{ $experience['duration'] }}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
     <div class="mt-7 mb-7 pb-10 bg-white rounded-lg"
         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
         <div>
@@ -473,9 +540,8 @@
             <hr class="border-t-2 w-full border-[#DAE4EA]">
         </div>
         <div>
-            @if (auth()->user()->seat_id != 2)
                 @if (!is_null($morningPreference))
-                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">Morning Preferences</div>
+                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">Preferences</div>
                     @foreach ($morningPreference as $index => $preference)
                         <div class="flex flex-col">
                             <p class="px-5 md:px-10 py-4 text-black text-xl font-normal font-sans">
@@ -485,43 +551,42 @@
                 @else
                     <p>No Morning Preferences found.</p>
                 @endif
-            @endif
         </div>
-        <div>
-            @if (auth()->user()->seat_id == 2)
-                @if (!is_null($eveningPreference))
-                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">
-                        Evening Preferences
-                    </div>
-                    @foreach ($eveningPreference as $index => $preference)
-                        <div class="flex flex-col">
-                            <p class="px-5 md:px-10 py-4 text-black text-xl font-normal font-sans">
-                                {{ $index + 1 }}. {{ $preference['name'] }} </p>
-                        </div>
-                    @endforeach
-                @else
-                    <p>No Evening Preferences found.</p>
-                @endif
-            @endif
-        </div>
+{{--        <div>--}}
+{{--            @if (auth()->user()->seat_id == 2)--}}
+{{--                @if (!is_null($eveningPreference))--}}
+{{--                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">--}}
+{{--                        Evening Preferences--}}
+{{--                    </div>--}}
+{{--                    @foreach ($eveningPreference as $index => $preference)--}}
+{{--                        <div class="flex flex-col">--}}
+{{--                            <p class="px-5 md:px-10 py-4 text-black text-xl font-normal font-sans">--}}
+{{--                                {{ $index + 1 }}. {{ $preference['name'] }} </p>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                @else--}}
+{{--                    <p>No Evening Preferences found.</p>--}}
+{{--                @endif--}}
+{{--            @endif--}}
+{{--        </div>--}}
 
-        <div>
-            @if (auth()->user()->seat_id == 3)
-                @if (!is_null($morningEveningPreference))
-                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">
-                        Evening Preferences
-                    </div>
-                    @foreach ($morningEveningPreference as $index => $preference)
-                        <div class="flex flex-col">
-                            <p class="px-5 md:px-10 py-4 text-black text-xl font-normal font-sans">
-                                {{ $index + 1 }}. {{ $preference['name'] }} </p>
-                        </div>
-                    @endforeach
-                @else
-                    <p>No Evening Preferences found.</p>
-                @endif
-            @endif
-        </div>
+{{--        <div>--}}
+{{--            @if (auth()->user()->seat_id == 3)--}}
+{{--                @if (!is_null($morningEveningPreference))--}}
+{{--                    <div class="px-5 md:px-10 text-xl py-4 font-bold" style="margin-top: 20px;">--}}
+{{--                        Evening Preferences--}}
+{{--                    </div>--}}
+{{--                    @foreach ($morningEveningPreference as $index => $preference)--}}
+{{--                        <div class="flex flex-col">--}}
+{{--                            <p class="px-5 md:px-10 py-4 text-black text-xl font-normal font-sans">--}}
+{{--                                {{ $index + 1 }}. {{ $preference['name'] }} </p>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                @else--}}
+{{--                    <p>No Evening Preferences found.</p>--}}
+{{--                @endif--}}
+{{--            @endif--}}
+{{--        </div>--}}
     </div>
 
     <div class="mt-7 mb-7 pb-10 bg-white rounded-lg"
@@ -754,34 +819,6 @@
                 </div>
             @endif
 
-            <!-- Stay Card Image -->
-            @if (auth()->user()->foreigner == 1 && false)
-                <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
-                    style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
-
-                    <span
-                        class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Foreign HSSC Certificate Image
-                    </span>
-                    <img src="{{ $foreignHsscCertificate }}" alt="foreignHsscCertificate Card Image"
-                        onclick="openModal('{{ $stayCard }}')"
-                        class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
-                </div>
-
-                <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
-                    style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
-
-                    <span
-                        class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Stay Card Image
-                    </span>
-                    <img src="{{ $stayCard }}" alt="Stay Card Image" onclick="openModal('{{ $stayCard }}')"
-                        class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
-                </div>
-            @endif
-
-
-
             <!-- Verified by CEO Image -->
             @if (in_array(3, $seatCategories))
                 <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
@@ -871,17 +908,50 @@
             @endif
 
             <!-- MDCAT Result Card Image -->
-            {{-- <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
+             <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
                 style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
 
                 <span
                     class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                    MDCAT Result Card Image
+                    General Nursing Diploma Image
                 </span>
-                <img src="{{ $mdcatResultCard }}" alt="MDCAT Result Card Image"
+                <img src="{{ $mdcatResultCard }}" alt="General Nursing Diploma Image"
                     onclick="openModal('{{ $mdcatResultCard }}')"
                     class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
-            </div> --}}
+            </div>
+                <!-- Stay Card Image -->
+                <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"
+                     style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
+
+                    <span
+                            class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
+                         <p>
+                                @if(auth()->user()->seat_id == 1)
+                                 One-Year Post-Basic Specialty
+                             @else
+                                 Midwifery
+                             @endif
+                                    Diploma Image
+                            </p>
+                    </span>
+                    <img src="{{ $stayCard }}" alt="Diploma Image Image" onclick="openModal('{{ $stayCard }}')"
+                         class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
+                </div>
+
+
+{{--                @if (auth()->user()->foreigner == 1 && false)--}}
+{{--                    <div class="mt-5 border-2 border-[#DAE4EA] p-5 rounded-lg flex flex-col justify-center items-center transition-transform hover:transform hover:-translate-y-2"--}}
+{{--                         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">--}}
+
+{{--                    <span--}}
+{{--                            class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">--}}
+{{--                        Foreign HSSC Certificate Image--}}
+{{--                    </span>--}}
+{{--                        <img src="{{ $stayCard }}" alt="foreignHsscCertificate Card Image"--}}
+{{--                             onclick="openModal('{{ $stayCard }}')"--}}
+{{--                             class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">--}}
+{{--                    </div>--}}
+{{--                @endif--}}
 
 
 
@@ -890,9 +960,9 @@
                     style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
                     <span
                         class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Extra Document Require 1 Image
+                        Experience Document First Image
                     </span>
-                    <img src="{{ $extraDocRequire1 }}" alt="CNIC Image"
+                    <img src="{{ $extraDocRequire1 }}" alt="Experience Document First Image"
                         onclick="openModal('{{ $extraDocRequire1 }}')"
                         class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
                 </div>
@@ -903,9 +973,9 @@
                     style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
                     <span
                         class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Extra Document Require 2 Image
+                        Experience Document Second Image
                     </span>
-                    <img src="{{ $extraDocRequire2 }}" alt="extraDocRequire2 Image"
+                    <img src="{{ $extraDocRequire2 }}" alt="Experience Document Second Image"
                         onclick="openModal('{{ $extraDocRequire2 }}')"
                         class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
                 </div>
@@ -916,9 +986,9 @@
                     style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
                     <span
                         class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Extra Document Require 3 Image
+                        Experience Document Third Image
                     </span>
-                    <img src="{{ $extraDocRequire3 }}" alt="extraDocRequire3 Image"
+                    <img src="{{ $extraDocRequire3 }}" alt="Experience Document Third Image"
                         onclick="openModal('{{ $extraDocRequire3 }}')"
                         class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
                 </div>
@@ -929,9 +999,9 @@
                     style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.10);">
                     <span
                         class="text-lg md:text-xl text-start md:text-center font-medium ml-2 -mt-1 md:-mt-3 md:leading-10 text-[#3c1fff]">
-                        Extra Document Require 4 Image
+                        Experience Document Fourth Image
                     </span>
-                    <img src="{{ $extraDocRequire4 }}" alt="extraDocRequire4 Image"
+                    <img src="{{ $extraDocRequire4 }}" alt="Experience Document Fourth Image"
                         onclick="openModal('{{ $extraDocRequire4 }}')"
                         class="border border-[#DAE4EA] rounded-lg justify-center object-cover object-center w-72 h-72 cursor-pointer">
                 </div>

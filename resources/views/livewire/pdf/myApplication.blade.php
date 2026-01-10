@@ -351,6 +351,14 @@
                 I further acknowledge that mutual transfers are strictly prohibited and shall not be permissible under any circumstances.
 
                 <br><br>
+
+                I am not involved in any disciplinary proceedings, nor is any disciplinary case pending against me at present.
+
+                <br><br>
+
+                I am not serving as an adhoc or contract employee.
+
+                <br><br>
                 I hereby affirm my unconditional acceptance of all the terms and conditions stated above.
 
 

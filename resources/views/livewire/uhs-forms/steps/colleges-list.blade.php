@@ -26,7 +26,7 @@
                         </span>  For modification of preferences, the applicant shall use the “Reset” option. In the event of a change in seat category, the previously selected college preference list shall stand cancelled, and the applicant shall be required to re-enter the preferences afresh.</li>
                     <li class="pt-3 text-lg font-normal flex flex-row"><span
                             class="text-blue-900  pr-3"><x-heroicon-s-light-bulb class="h-6 w-6 text-blue-800" />
-                        </span> Admissions to the BS Nursing programme are offered in a total of forty-four (44) Nursing Colleges for female candidates and one (1) Nursing College for male candidates.
+                        </span> Admissions to the Post RN BS Nursing programme are offered total 11 Nursing Colleges.
                     </li>
                     <li class="pt-3 text-lg font-normal flex flex-row"><span
                             class="text-blue-900  pr-3"><x-heroicon-s-light-bulb class="h-6 w-6 text-blue-800" />
@@ -146,97 +146,97 @@
             </div>
         </div>
 
-    @if ( auth()->user()->seat_id == 2 || auth()->user()->seat_id == 3)
-        <div class="mb-7 mt-7 bg-white border border-brown-500 rounded-lg"
-             style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0,0,0,0.03);">
-            <div class="p-10">
-                {{-- top header --}}
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div>
-                        <p
-                                class="text-center md:text-start text-2xl font-medium text-[#333333] tracking-[0.29px] font-roboto">
-                            Evening Colleges</p>
-                    </div>
+{{--    @if ( auth()->user()->seat_id == 2 || auth()->user()->seat_id == 3)--}}
+{{--        <div class="mb-7 mt-7 bg-white border border-brown-500 rounded-lg"--}}
+{{--             style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0,0,0,0.03);">--}}
+{{--            <div class="p-10">--}}
+{{--                --}}{{-- top header --}}
+{{--                <div class="grid grid-cols-1 md:grid-cols-2">--}}
+{{--                    <div>--}}
+{{--                        <p--}}
+{{--                                class="text-center md:text-start text-2xl font-medium text-[#333333] tracking-[0.29px] font-roboto">--}}
+{{--                            Evening Colleges</p>--}}
+{{--                    </div>--}}
 
-                </div>
-                {{-- multiselect --}}
-                <div class="mt-5 grid grid-cols-1 md:grid-cols-8 items-center gap-2 md:gap-5">
-                    <div class="mb-7 mt-2  md:col-span-6 lg:col-span-7">
-                        <span>
-                            <label class="font-semibold">Select a College <span class="text-sm text-black float-right">{{count($this->selectedEveningList)}}/{{count($this->nursingEveningColleges)}}</span></label>
-                            <x-select class=" mt-1 text-black" style="padding: 8px 12px;box-shadow: none; border: 2px solid gray;"
-                                      placeholder="Please select colleges from this drop down"
-                                      option-id="id" option-value="name" option-label="name" :options="$this->nursingEveningColleges"
-                                      wire:model="selectedEveningList" rightIcon="plus" multiselect/>
-                        </span>
-                    </div>
-                    {{-- Reset Button --}}
-                    <div
-                            class="mt-1 flex md:col-span-2 lg:col-span-1 items-center gap-3 justify-center md:justify-end float-right">
-                        <button
-                                class="py-2 px-5 bg-red-600 text-base text-white font-medium rounded-lg flex items-center gap-3"
-                                type="button" wire:click="resetEveningScreen">
-                            Reset <span><x-heroicon-s-trash class="h-4 w-4 text-white" /> </span>
-                        </button>
+{{--                </div>--}}
+{{--                --}}{{-- multiselect --}}
+{{--                <div class="mt-5 grid grid-cols-1 md:grid-cols-8 items-center gap-2 md:gap-5">--}}
+{{--                    <div class="mb-7 mt-2  md:col-span-6 lg:col-span-7">--}}
+{{--                        <span>--}}
+{{--                            <label class="font-semibold">Select a College <span class="text-sm text-black float-right">{{count($this->selectedEveningList)}}/{{count($this->nursingEveningColleges)}}</span></label>--}}
+{{--                            <x-select class=" mt-1 text-black" style="padding: 8px 12px;box-shadow: none; border: 2px solid gray;"--}}
+{{--                                      placeholder="Please select colleges from this drop down"--}}
+{{--                                      option-id="id" option-value="name" option-label="name" :options="$this->nursingEveningColleges"--}}
+{{--                                      wire:model="selectedEveningList" rightIcon="plus" multiselect/>--}}
+{{--                        </span>--}}
+{{--                    </div>--}}
+{{--                    --}}{{-- Reset Button --}}
+{{--                    <div--}}
+{{--                            class="mt-1 flex md:col-span-2 lg:col-span-1 items-center gap-3 justify-center md:justify-end float-right">--}}
+{{--                        <button--}}
+{{--                                class="py-2 px-5 bg-red-600 text-base text-white font-medium rounded-lg flex items-center gap-3"--}}
+{{--                                type="button" wire:click="resetEveningScreen">--}}
+{{--                            Reset <span><x-heroicon-s-trash class="h-4 w-4 text-white" /> </span>--}}
+{{--                        </button>--}}
 
-                    </div>
-                </div>
-                {{-- table --}}
-                <div class="mt-5 ">
-                    <div class="relative overflow-x-auto shadow sm:rounded-lg">
-                        <table id="table_mbbs_id"
-                               class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
-                            <thead
-                                    class="text-sm text-gray-900 uppercase bg-[#d2dbe2] dark:bg-[#dcdfec] dark:text-gray-500">
-                            <tr>
-                                <th scope="col" class="px-5 py-2 w-1/5">Preference. No.</th>
-                                <th scope="col" class="px-6 py-5 w-3/5">
-                                    Name of College
-                                </th>
-                                <th scope="col" class="px-6 py-5 w-1/5 text-center">
-                                    Action
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @php $counter = 1; @endphp
-                            @if (!empty($selectedEveningList))
-                                @foreach ($selectedEveningList as $index => $college)
-                                    <tr id="{{ $college }}" class="bg-white cursor-pointer border-b"
-                                        data-index="{{ $index }}">
-                                        <td class="px-5 py-2 flex justify-start text-base">{{ $counter }}</td>
-                                        <td scope="row"
-                                            class="px-6 py-4 font-normal text-base text-gray-700 whitespace-nowrap">
-                                            {{ $college }}
-                                        </td>
-                                        <td class="px-6 py-4 flex justify-center">
-                                            <button wire:click="removeEveningColleges({{ $index }})"
-                                                    type="button">
-                                                <x-heroicon-o-trash class="w-6 h-6 text-red-500" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    @php $counter++; @endphp
-                                @endforeach
-                            @else
-                                <tr class="bg-white border-b">
-                                    <td colspan=2 scope="row"
-                                        class="px-6 py-4 font-normal text-gray-700 whitespace-nowrap">
-                                        <p> No preference found! </p>
-                                    </td>
-                                </tr>
-                            @endif
-                            </tbody>
-                        </table>
-                    </div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                --}}{{-- table --}}
+{{--                <div class="mt-5 ">--}}
+{{--                    <div class="relative overflow-x-auto shadow sm:rounded-lg">--}}
+{{--                        <table id="table_mbbs_id"--}}
+{{--                               class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">--}}
+{{--                            <thead--}}
+{{--                                    class="text-sm text-gray-900 uppercase bg-[#d2dbe2] dark:bg-[#dcdfec] dark:text-gray-500">--}}
+{{--                            <tr>--}}
+{{--                                <th scope="col" class="px-5 py-2 w-1/5">Preference. No.</th>--}}
+{{--                                <th scope="col" class="px-6 py-5 w-3/5">--}}
+{{--                                    Name of College--}}
+{{--                                </th>--}}
+{{--                                <th scope="col" class="px-6 py-5 w-1/5 text-center">--}}
+{{--                                    Action--}}
+{{--                                </th>--}}
+{{--                            </tr>--}}
+{{--                            </thead>--}}
+{{--                            <tbody>--}}
+{{--                            @php $counter = 1; @endphp--}}
+{{--                            @if (!empty($selectedEveningList))--}}
+{{--                                @foreach ($selectedEveningList as $index => $college)--}}
+{{--                                    <tr id="{{ $college }}" class="bg-white cursor-pointer border-b"--}}
+{{--                                        data-index="{{ $index }}">--}}
+{{--                                        <td class="px-5 py-2 flex justify-start text-base">{{ $counter }}</td>--}}
+{{--                                        <td scope="row"--}}
+{{--                                            class="px-6 py-4 font-normal text-base text-gray-700 whitespace-nowrap">--}}
+{{--                                            {{ $college }}--}}
+{{--                                        </td>--}}
+{{--                                        <td class="px-6 py-4 flex justify-center">--}}
+{{--                                            <button wire:click="removeEveningColleges({{ $index }})"--}}
+{{--                                                    type="button">--}}
+{{--                                                <x-heroicon-o-trash class="w-6 h-6 text-red-500" />--}}
+{{--                                            </button>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                    @php $counter++; @endphp--}}
+{{--                                @endforeach--}}
+{{--                            @else--}}
+{{--                                <tr class="bg-white border-b">--}}
+{{--                                    <td colspan=2 scope="row"--}}
+{{--                                        class="px-6 py-4 font-normal text-gray-700 whitespace-nowrap">--}}
+{{--                                        <p> No preference found! </p>--}}
+{{--                                    </td>--}}
+{{--                                </tr>--}}
+{{--                            @endif--}}
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
 
-                    @error('selectedEveningList')
-                    <div class="error text-red-600 mt-2">Please select Evening College List</div>
-                    @enderror
-                </div>
-            </div>
-        </div>
-    @endif
+{{--                    @error('selectedEveningList')--}}
+{{--                    <div class="error text-red-600 mt-2">Please select Evening College List</div>--}}
+{{--                    @enderror--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
     <div class="grid grid-cols-2 mb-16">
         <div>

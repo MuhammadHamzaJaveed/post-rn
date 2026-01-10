@@ -510,110 +510,271 @@
             </div>
 
 
+            {{-- mdcat result card --}}
+            <div id="mdcatResultCard" class="grid grid-cols-1  md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>General Nursing Diploma Document</p>
+                        </div>
+                    </div>
+                    <p>
+                         General Nursing Diploma Document
+                        <span class="text-red-600">*</span>
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        required
+                        label="General Nursing Diploma"
+                        name="mdcatResultCard"
+                        :filePath="auth()->user()->userMdcatResultCardPhoto?->path ?? ''"
+                        :fileName="auth()->user()->userMdcatResultCardPhoto?->name ?? ''"
+                />
+            </div>
+
+
+                              {{-- Valid Stay Card/Residence --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+
+
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>
+                                @if(auth()->user()->seat_id == 1)
+                                    One-Year Post-Basic Specialty
+                                @else
+                                    Midwifery
+                                @endif
+                                    Diploma Document
+                            </p>
+                        </div>
+                    </div>
+                    <p>
+                        @if(auth()->user()->seat_id == 1)
+                            One-Year Post-Basic Specialty
+                        @else
+                            Midwifery
+                        @endif
+                            Diploma Document
+                        <span class="text-red-600">*</span>
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        required
+                        label="{{ auth()->user()->seat_id == 1 ? 'One-year Post-Basic Specialty Diploma' : 'Midwifery Diploma' }}"
+                        name="stayCard"
+                        :filePath="auth()->user()->userStayCardPhoto?->path ?? ''"
+                        :fileName="auth()->user()->userStayCardPhoto?->name ?? ''"
+                />
+            </div>
+
+            {{--
+
+                        --}}{{-- Mandatory Fields end here --}}{{--
+
+
+
+                        --}}{{-- Valid Stay Card/Residence --}}{{--
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+
+
+                            <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                                <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                                    <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                                    <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                                         class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                                        <p>Valid Stay Card/ Residence Card/ blue Card/ Iqama or related
+                                            documents for Overseas Pakistanis (being a Pakistani citizen
+                                            permanently resident in a foreign country)</p>
+                                    </div>
+                                </div>
+                                <p>
+                                    Upload Valid Stay Card/Residence Document
+                                    <span class="text-red-600">*</span>
+                                </p>
+                            </div>
+
+                            <x-dynamic-file-upload
+                                    inputHeading="Only Jpg or Jpeg"
+                                    required
+                                    label="Stay Card"
+                                    name="stayCard"
+                                    :filePath="auth()->user()->userStayCardPhoto?->path ?? ''"
+                                    :fileName="auth()->user()->userStayCardPhoto?->name ?? ''"
+                            />
+                        </div>
+
+
+                        --}}{{-- foreignHsscCertificate  --}}{{--
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+
+                            <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                                <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                                    <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                                    <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                                         class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                                        <p>Please upload clear and legible images of High School Certificate issued by the
+                                            respective
+                                            foreign educational institute confirming applicant to
+                                            have completed HSSC/ equivalent studies as a
+                                            regular student.</p>
+                                    </div>
+                                </div>
+                                <p>
+                                    High School Certificate for HSSC/ Equivalent Studies Confirmation
+                                    <span class="text-red-600">*</span>
+                                </p>
+                            </div>
+
+                            <x-dynamic-file-upload
+                                    inputHeading="Only Jpg or Jpeg"
+                                    required
+                                    label="Foreign Hssc Certificate"
+                                    name="foreignHsscCertificate"
+                                    :filePath="auth()->user()->userForeignHsscCertificatePhoto?->path ?? ''"
+                                    :fileName="auth()->user()->userForeignHsscCertificatePhoto?->name ?? ''"
+                            />
+
+                        </div>--}}
+
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>Experience Document First</p>
+                        </div>
+                    </div>
+                    <p>
+                        Experience Document First
+                        <span class="text-red-600">*</span>
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        label="Experience Document First"
+                        name="extraDocRequire1"
+                        required
+                        :filePath="auth()->user()->userDocumentRequirementOnePhoto?->path ?? ''"
+                        :fileName="auth()->user()->userDocumentRequirementOnePhoto?->name ?? ''"
+                />
+            </div>
+
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>Experience Document Second </p>
+                        </div>
+                    </div>
+                    <p>
+                        Experience Document Second
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        label="Experience Document Second"
+                        name="extraDocRequire2"
+                        :filePath="auth()->user()->userDocumentRequirementTwoPhoto?->path ?? ''"
+                        :fileName="auth()->user()->userDocumentRequirementTwoPhoto?->name ?? ''"
+                />
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>Experience Document Third</p>
+                        </div>
+                    </div>
+                    <p>
+                        Experience Document Third
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        label="Experience Document Third"
+                        name="extraDocRequire3"
+                        :filePath="auth()->user()->userDocumentRequirementThreePhoto?->path ?? ''"
+                        :fileName="auth()->user()->userDocumentRequirementThreePhoto?->name ?? ''"
+                />
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>Experience Document Fourth</p>
+                        </div>
+                    </div>
+                    <p>
+                        Experience Document Fourth
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        label="Experience Document Fourth"
+                        name="extraDocRequire4"
+                        :filePath="auth()->user()->userDocumentRequirementFourPhoto?->path ?? ''"
+                        :fileName="auth()->user()->userDocumentRequirementFourPhoto?->name ?? ''"
+                />
+            </div>
+
+          {{--  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
+                <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
+                    <div @click="tooltipOpen = !tooltipOpen" class="relative group">
+                        <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
+                        <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
+                             class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
+                            <p>Nursing Result Card Document </p>
+                        </div>
+                    </div>
+                    <p>
+                        Nursing Result Card Document
+                    </p>
+                </div>
+
+                <x-dynamic-file-upload
+                        inputHeading="Only Jpg or Jpeg"
+                        label="Extra Document 5"
+                        name="extraDocRequire5"
+                        :filePath="auth()->user()->userDocumentRequirementFivePhoto?->path ?? ''"
+                        :fileName="auth()->user()->userDocumentRequirementFivePhoto?->name ?? ''"
+                />
+            </div>--}}
+
+
         </div>
     </div>
+
+
+
     @if(1 != 1)
-
-
-
-
-        {{-- mdcat result card --}}
-        <div id="mdcatResultCard" class="grid grid-cols-1  md:grid-cols-2 gap-8 items-center justify-center mt-8">
-            <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
-                <div @click="tooltipOpen = !tooltipOpen" class="relative group">
-                    <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
-                    <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
-                         class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
-                        <p>Please upload your valid MDCAT result card. In the case of overseas Pakistanis or dual
-                            nationality holders, upload your SAT-II, International MCAT, or UCAT result card. Image
-                            of the front side of the document shall only be uploaded.</p>
-                    </div>
-                </div>
-                <p>
-                    Upload Valid MDCAT Result Card(or SAT-II, Intl. MCAT, UCAT for Overseas/Dual Nationals)
-                    <span class="text-red-600">*</span>
-                </p>
-            </div>
-
-            <x-dynamic-file-upload
-                    inputHeading="Only Jpg or Jpeg"
-                    required
-                    label="MDcat Result Card"
-                    name="mdcatResultCard"
-                    :filePath="auth()->user()->userMdcatResultCardPhoto?->path ?? ''"
-                    :fileName="auth()->user()->userMdcatResultCardPhoto?->name ?? ''"
-            />
-        </div>
-
-
-
-        {{-- Mandatory Fields end here --}}
-
-
-
-        {{-- Valid Stay Card/Residence --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
-
-
-            <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
-                <div @click="tooltipOpen = !tooltipOpen" class="relative group">
-                    <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
-                    <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
-                         class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
-                        <p>Valid Stay Card/ Residence Card/ blue Card/ Iqama or related
-                            documents for Overseas Pakistanis (being a Pakistani citizen
-                            permanently resident in a foreign country)</p>
-                    </div>
-                </div>
-                <p>
-                    Upload Valid Stay Card/Residence Document
-                    <span class="text-red-600">*</span>
-                </p>
-            </div>
-
-            <x-dynamic-file-upload
-                    inputHeading="Only Jpg or Jpeg"
-                    required
-                    label="Stay Card"
-                    name="stayCard"
-                    :filePath="auth()->user()->userStayCardPhoto?->path ?? ''"
-                    :fileName="auth()->user()->userStayCardPhoto?->name ?? ''"
-            />
-        </div>
-
-
-        {{-- foreignHsscCertificate  --}}
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center mt-8">
-
-            <div x-data="{ tooltipOpen: false }" class="flex items-start gap-3">
-                <div @click="tooltipOpen = !tooltipOpen" class="relative group">
-                    <x-heroicon-s-information-circle class="h-7 w-7 text-blue-600 cursor-pointer" />
-                    <div x-show="tooltipOpen" @click.away="tooltipOpen = false"
-                         class="absolute bg-gray-300 text-black p-3 shadow-md rounded-md border max-w-lg w-96 border-gray-500 top-8 left-0 z-10 opacity-100 transition-opacity duration-300">
-                        <p>Please upload clear and legible images of High School Certificate issued by the
-                            respective
-                            foreign educational institute confirming applicant to
-                            have completed HSSC/ equivalent studies as a
-                            regular student.</p>
-                    </div>
-                </div>
-                <p>
-                    High School Certificate for HSSC/ Equivalent Studies Confirmation
-                    <span class="text-red-600">*</span>
-                </p>
-            </div>
-
-            <x-dynamic-file-upload
-                    inputHeading="Only Jpg or Jpeg"
-                    required
-                    label="Foreign Hssc Certificate"
-                    name="foreignHsscCertificate"
-                    :filePath="auth()->user()->userForeignHsscCertificatePhoto?->path ?? ''"
-                    :fileName="auth()->user()->userForeignHsscCertificatePhoto?->name ?? ''"
-            />
-
-        </div>
     <div class="mt-7 mb-7 bg-white rounded-lg"
         style="box-shadow: 0px 0px 10.666666984558105px 5.333333492279053px rgba(0, 0, 0, 0.03);">
         <div>

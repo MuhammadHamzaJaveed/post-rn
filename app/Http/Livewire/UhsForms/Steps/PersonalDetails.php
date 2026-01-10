@@ -217,7 +217,7 @@ class PersonalDetails extends Component
             $this->mobileNumber = $personalDetails->mobile_number;
             $this->secondaryNumber = $personalDetails->secondary_number;
             $this->telephoneNumber = $personalDetails->telephone_number;
-            $this->genderId = $personalDetails->gender_id;
+//            $this->genderId = $personalDetails->gender_id;
             $this->residenceId = $personalDetails->residence_area_id;
             $this->address = $personalDetails->address;
             $this->domicile = $personalDetails->district_id;
@@ -239,7 +239,7 @@ class PersonalDetails extends Component
      */
     public function getAllGendersProperty()
     {
-      return  $this->userServices->getAllGenders()->where('id',auth()->user()->seat_id)->toArray();
+      return  $this->userServices->getAllGenders()->where('id',auth()->user()->seat_id);
     }
 
     /**

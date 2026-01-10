@@ -135,6 +135,8 @@ class ApplicationStatus extends Component
 
     public $foreigner;
 
+    public $experiences;
+
     public function mount()
     {
         $user = auth()->user();
@@ -174,6 +176,8 @@ class ApplicationStatus extends Component
         $this->morningEveningPreference = !empty($morningEveningCollegePreferences) ? json_decode($morningEveningCollegePreferences[0], true) : [];
 
         $this->seatCategories = auth()->user()->seatCategories->pluck('id')->toArray();
+
+        $this->experiences = collect(json_decode($this->qualifications->experiences,true));
 
         $user = auth()->user();
 

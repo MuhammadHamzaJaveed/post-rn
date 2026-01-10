@@ -102,6 +102,24 @@
                                 I further acknowledge that mutual transfers are strictly prohibited and shall not be permissible under any circumstances.
                             </li>
                             <br>
+                            <li class="flex items-start justify-start">
+                                <div><input type="checkbox" id="under4" required
+                                        class="w-5 h-5 rounded border text-2xl font-bold mr-3 text-blue-600 bg-gray-100
+                                     border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                                     focus:ring-2 dark:bg-gray-100 dark:border-gray-300" />
+                                </div>
+                                I am not involved in any disciplinary proceedings, nor is any disciplinary case pending against me at present.
+                            </li>
+                            <br>
+                            <li class="flex items-start justify-start">
+                                <div><input type="checkbox" id="under4" required
+                                        class="w-5 h-5 rounded border text-2xl font-bold mr-3 text-blue-600 bg-gray-100
+                                     border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                                     focus:ring-2 dark:bg-gray-100 dark:border-gray-300" />
+                                </div>
+                                I am not serving as an adhoc or contract employee.
+                            </li>
+                            <br>
                         </ul>
                     </div>
                     @error('terms')
